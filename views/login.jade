@@ -1,0 +1,57 @@
+extends layout
+block header
+    style(type="text/css").
+        #loginFrom{width:320px}
+        .loginWrap{line-height:32px;margin:30px 42px}
+
+block content
+    div#loginFrom.easyui-dialog.loginFrom(data-options="closable:false,modal:true,buttons:'#loginBtns',title:'#{title}'")
+        form#ff(method="post")
+            div.loginWrap
+                label(for="userName") 用户名：
+                input#userName.easyui-validatebox.form-textbox.account(type="text",name="userName",data-options="required:true")
+                br
+                label(for="userPwd") 密&nbsp;&nbsp;码：
+                input#userPwd.easyui-validatebox.form-textbox.password(type="password",name="userPwd",data-options="required:true")
+        div#loginBtns
+            a#btnLogin.easyui-linkbutton(data-options="iconCls:'icon-ok'") 登录
+            a#btnCancel.easyui-linkbutton(data-options="iconCls:'icon-cancel'") 取消
+block footer
+    script(type="text/javascript").
+        $(function(){
+            $(window).resize(function() {
+                $("#loginFrom").dialog('center');
+            });
+            //登录，提交表单数据
+            $("#btnLogin").click(function(){
+                $.messager.progress();	// 显示进度条
+                $("#ff").form('submit',{
+                    url:'/ajax/login',
+                    onSubmit:function(){
+                        var isValid = $(this).form('validate');
+                        if (!isValid){
+                            $.messager.progress('close');	// 如果表单是无效的则隐藏进度条
+                        }
+                        return isValid;	// 返回false终止表单提交
+                    },
+                    success: function(result){
+                    $.messager.progress('close');	// 如果提交成功则隐藏进度条
+                    result = $.parseJSON(result);
+                    console.log(result);
+                    if(result.Code == 200)
+                    {
+                        $.messager.show({ title:"友情提示",msg:"登录成功，正在为您跳转...",timeout:1000});
+                        setTimeout(function(){ location.href = "/"; },1000)
+                    }
+                    else
+                    {
+                        $.messager.alert("友情提示","账号或密码错误，请重新登录。","error");
+                    }
+                }
+            });
+                });
+                //取消
+                $("#btnCancel").click(function(){
+                    $("input").val('');
+                });
+            });

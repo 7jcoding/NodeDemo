@@ -1,0 +1,89 @@
+﻿/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+    color: #232323;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+#loginFrom .account {
+    background-image: url(/images/user_male.png);
+    background-repeat: no-repeat;
+    background-position: 2px 4px;
+    padding-left: 18px;
+    width: 160px;
+}
+#loginFrom .password {
+    background-image: url(/images/lock_key.png);
+    background-repeat: no-repeat;
+    background-position: 2px 4px;
+    padding-left: 18px;
+    width: 160px;
+}
+
+.form-textbox, .form-textarea, .form-dropdown, .form-radio-other-input, .form-captcha input, .form-list {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.75);
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.75);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2) inset, 0 1px 0 rgba(255, 255, 255, 0.75);
+    background-color: #FFFFFF;
+    border: 1px solid #999;
+    padding: 3px 6px;
+}
+
+.user_info {
+    position: absolute;
+    right: 0;
+    line-height: 20px;
+}
+
+.system_controller {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

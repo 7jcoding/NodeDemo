@@ -1,0 +1,22 @@
+extends ../layout
+block content
+    div Welcome to you,#{user}
+    table#grid
+block footer
+    script(type="text/javascript",src="/js/data-grid.js")
+    script(type="text/javascript").
+        $(function(){
+            var setting = {
+                 grid:$("#grid"),
+                 method:'get',
+                 url:'/ajax/grid',
+                 rownumbers:true,
+                 columns:[[
+                    { field:'ck',checkbox:true},
+                    { field:'id',title:'用户ID'},
+                    { field:'userName',title:'用户名称'},
+                    { field:'userPwd',title:'用户密码'}
+                 ]]
+            };
+            InitGrid(setting);
+        });
